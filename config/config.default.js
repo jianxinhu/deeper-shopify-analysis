@@ -23,6 +23,12 @@ module.exports = appInfo => {
     // myAppName: 'egg',
   };
 
+  config.mongoose = {
+    client: {
+      url: 'mongodb://deeper-shopify-analysis:PR9ijb7uzds77A@165.227.193.14:27017/?serverSelectionTimeoutMS=5000&connectTimeoutMS=10000&authSource=deeper-shopify-analysis&authMechanism=SCRAM-SHA-256',
+    },
+  };
+
   return {
     ...config,
     ...userConfig,
