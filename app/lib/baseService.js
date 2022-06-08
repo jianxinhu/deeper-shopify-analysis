@@ -187,7 +187,7 @@ class BaseServices extends Service {
       }
     }
 
-    Object.entries(data).map(([ key, value ]) => ((value !== null) && (doc.set(key, value))));
+    Object.entries(data).map(([ key, value ]) => ((value !== null || value !== 'undefined') && (doc.set(key, value))));
     doc = await doc.save();
     return doc;
   }
