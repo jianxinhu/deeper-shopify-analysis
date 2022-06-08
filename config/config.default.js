@@ -24,12 +24,12 @@ module.exports = appInfo => {
   };
 
   config.mongoose = {
-    url: 'mongodb://deeper@cluster0-shard-00-00.5l1mr.mongodb.net:27017,cluster0-shard-00-01.5l1mr.mongodb.net:27017,cluster0-shard-00-02.5l1mr.mongodb.net:27017/deeper-shopify-analysis?ssl=true&replicaSet=atlas-xy0wym-shard-0&readPreference=primary&connectTimeoutMS=10000&authSource=admin&authMechanism=SCRAM-SHA-1',
+    url: 'mongodb://deeper-shopify-analysis@165.227.193.14:27017/deeper-shopify-analysis',
     options: {
-      user: 'deeper',
-      pass: 'fDpA875QchMl8GVA',
+      user: 'deeper-shopify-analysis',
+      pass: 'PR9ijb7uzds77A',
       auth: {
-        authSource: 'admin',
+        authSource: 'deeper-shopify-analysis',
       },
       auto_reconnect: true,
       poolSize: 10,
