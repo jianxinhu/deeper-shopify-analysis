@@ -25,7 +25,7 @@
     "node": ">=10.0.0"
   },
   "scripts": {
-    "start": "egg-scripts start --daemon --title=egg-server-deeper-shopify-analysis",
+    "start": "egg-scripts start  --port=7001 --daemon --title=egg-server-deeper-shopify-analysis",
     "stop": "egg-scripts stop --title=egg-server-deeper-shopify-analysis",
     "dev": "egg-bin dev",
     "debug": "egg-bin debug",

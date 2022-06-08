@@ -5,6 +5,10 @@ const baseModel = require('../lib/baseModel');
 module.exports = app => (baseModel(app, {
   modelName: 'deeper_events',
   props: {
+    from:{
+      type: String,
+      default: 'google',
+    },
     utm_source: {
       type: String,
       default: '',

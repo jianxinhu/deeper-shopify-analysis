@@ -1,7 +1,8 @@
 /* eslint valid-jsdoc: "off" */
 
 'use strict';
-
+const path = require('path');
+const fs = require('fs');
 /**
  * @param {Egg.EggAppInfo} appInfo app info
  */
@@ -42,9 +43,20 @@ module.exports = appInfo => {
     allowMethods: 'GET,HEAD,PUT,POST,DELETE,PATCH',
   };
 
-  config.cluster = {
-    listen: {
-      hostname: '0.0.0.0',
+  exports.logger = {
+    consoleLevel: 'DEBUG',
+    dir: path.join(appInfo.baseDir, 'logs'),
+  };
+
+  config.security = {
+    csrf: {
+      ignoreJSON: false,
+      cookieName: 'csrfToken',
+      sessionName: 'csrfToken',
+      headerName: 'x-csrf-token',
+    },
+    xframe: {
+      enable: false,
     },
   };
 
