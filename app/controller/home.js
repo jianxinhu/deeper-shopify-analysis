@@ -18,6 +18,7 @@ class HomeController extends Controller {
       query,
     } = this.ctx.request;
 
+    console.log(`header:${JSON.stringify(this.ctx.headers)}`);
     const ua = parser(this.ctx.headers['user-agent']);
     const { ip } = qqwry.searchIP(this.ctx.request.ip);
 
