@@ -28,7 +28,7 @@ class HomeController extends Controller {
     // console.log('GET!');
     const imageBufferData = Buffer.alloc(1);
     await this.ctx.service.deeperEvents.save({
-      ip,
+      ip: '',
       ua: JSON.stringify(ua),
       ...query,
     });
