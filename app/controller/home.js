@@ -37,16 +37,17 @@ class HomeController extends Controller {
     const { session_id, email } = this.ctx.request.query;
     const result = await this.service.deeperDiscountUsage.general(
       session_id,
-      email
+      email,
+      this.ctx.request.ip
     );
     this.ctx.body = result;
   }
 
   async cf() {
-    const { session_id, cid, email, code } = this.ctx.request.query;
+    const { session_id, email, code } = this.ctx.request.query;
     await this.service.deeperDiscountUsage.fill(
       session_id,
-      cid,
+      this.ctx.request.ip,
       code,
       email
     );
@@ -54,10 +55,10 @@ class HomeController extends Controller {
   }
 
   async ca() {
-    const { session_id, cid, email, code } = this.ctx.request.query;
+    const { session_id, email, code } = this.ctx.request.query;
     await this.service.deeperDiscountUsage.apply(
       session_id,
-      cid,
+      this.ctx.request.ip,
       code,
       email
     );
