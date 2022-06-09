@@ -20,9 +20,9 @@ class HomeController extends Controller {
 
     console.log(`header:${JSON.stringify(this.ctx.headers)}`);
     const ua = parser(this.ctx.headers['user-agent']);
-    const { ip } = qqwry.searchIP(this.ctx.request.ip);
+    // const { ip } = qqwry.searchIP(this.ctx.request.ip);
 
-    console.log(`ip:${JSON.stringify(ip)}`);
+    console.log(`ip:${JSON.stringify(this.ctx.request.ip)}`);
     console.log(`ua:${JSON.stringify(ua)}`);
 
     // console.log('GET!');
