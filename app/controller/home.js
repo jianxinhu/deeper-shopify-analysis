@@ -2,11 +2,11 @@
 
 const Controller = require('egg').Controller;
 
-const parser = require('ua-parser-js');
-const libQQwry = require('lib-qqwry');
+// const parser = require('ua-parser-js');
+// const libQQwry = require('lib-qqwry');
 
-libQQwry.init();
-libQQwry.speed();
+// libQQwry.init();
+// libQQwry.speed();
 
 class HomeController extends Controller {
   async index() {
@@ -19,18 +19,18 @@ class HomeController extends Controller {
       query,
     } = this.ctx.request;
 
-    const ua = parser(this.ctx.header('user-agent'));
+    // const ua = parser(this.ctx.header('user-agent'));
 
-    const ip = libQQwry.searchIP(this.ctx.request.ip);
+    // const ip = libQQwry.searchIP(this.ctx.request.ip);
 
-    console.log(`ip:${ip}`);
-    console.log(`ua:${JSON.stringify(ua)}`);
+    // console.log(`ip:${ip}`);
+    // console.log(`ua:${JSON.stringify(ua)}`);
 
-    console.log('GET!');
+    // console.log('GET!');
     const imageBufferData = Buffer.alloc(1);
     await this.ctx.service.deeperEvents.save({
-      ip,
-      ua,
+      // ip,
+      // ua,
       ...query,
     });
     this.ctx.body = imageBufferData;
