@@ -2,6 +2,12 @@
 
 const Controller = require('egg').Controller;
 
+const parser = require('ua-parser-js');
+const libQQwry = require('lib-qqwry');
+
+libQQwry.init();
+libQQwry.speed();
+
 class HomeController extends Controller {
   async index() {
     const {
@@ -14,6 +20,13 @@ class HomeController extends Controller {
     const {
       query,
     } = this.ctx.request;
+
+    const ua = parser(this.ctx.header('user-agent'));
+
+    const ip = libQQwry.searchIP(this.ctx.request.ip);
+
+    console.log(`ip:${ip}`);
+    console.log(`ua:${JSON.stringify(ua)}`);
 
     console.log('GET!');
     const imageBufferData = Buffer.alloc(1);
