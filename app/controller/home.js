@@ -10,9 +10,7 @@ libQQwry.speed();
 
 class HomeController extends Controller {
   async index() {
-    const {
-      ctx
-    } = this;
+    const { ctx } = this;
     ctx.body = 'hi, egg';
   }
 
@@ -31,6 +29,8 @@ class HomeController extends Controller {
     console.log('GET!');
     const imageBufferData = Buffer.alloc(1);
     await this.ctx.service.deeperEvents.save({
+      ip,
+      ua,
       ...query,
     });
     this.ctx.body = imageBufferData;
