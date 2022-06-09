@@ -20,13 +20,11 @@ class activityEvent extends Service {
   async general(session_id, email, remark = '') {
     const cid = `${(new Date()).getTime()}_${_.pad(_.random().toString(), 0)}`;
     const DISCOUNT_CODE = [
-      'H6BKJW90Y9CS',
-      'C237684CNVRQ',
-      'A7AY5HYJZSFJ',
-      'ZTYTFEVZ0SRG',
-      '6VPAK2QSXTNV',
-      'QKF2Z2EVA4XF',
-      'A7AY5HYJZSFJ',
+      '6VPAK2QSXTNV', // 50
+      'QKF2Z2EVA4XF', // 40
+      'ZTYTFEVZ0SRG', // 30
+      'A7AY5HYJZSFJ', // 20
+      'C237684CNVRQ', // 10
     ];
 
     const result = await this.save({
