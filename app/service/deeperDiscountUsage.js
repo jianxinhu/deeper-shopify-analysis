@@ -17,8 +17,12 @@ class activityEvent extends Service {
     });
   }
 
-  async general(session_id, email, remark = '') {
-    const cid = `${(new Date()).getTime()}_${_.pad(_.random().toString(), 0)}`;
+  async general(session_id, email, cid) {
+
+    const exists = await this.findOne({ cid });
+    if (exists) {
+      return { code: '' };
+    }
     const DISCOUNT_CODE = [
       'H6BKJW90Y9CS',
       'C237684CNVRQ',
@@ -33,11 +37,10 @@ class activityEvent extends Service {
       cid,
       session_id,
       email,
-      remark,
       code: _.shuffle(DISCOUNT_CODE)[0],
       status: CODE_STATUS.CREATE,
     });
-    return _.pick(result.toJSON(), [ 'cid', 'code' ]);
+    return _.pick(result.toJSON(), [ 'code' ]);
   }
 
   async fill(session_id, cid, code, email) {
