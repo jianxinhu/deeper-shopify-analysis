@@ -35,6 +35,38 @@ class HomeController extends Controller {
     this.ctx.body = imageBufferData;
     this.ctx.response.type = 'image/png';
   }
+
+  // Get Discout code by ranbom
+  async c() {
+    const { session_id, email } = this.ctx.request.query;
+    const result = await this.service.deeperDiscountUsage.general(
+      session_id,
+      email
+    );
+    this.ctx.body = result;
+  }
+
+  async cf() {
+    const { session_id, cid, email, code } = this.ctx.request.query;
+    await this.service.deeperDiscountUsage.fill(
+      session_id,
+      cid,
+      code,
+      email
+    );
+    this.ctx.body = { success: 'ok' };
+  }
+
+  async ca() {
+    const { session_id, cid, email, code } = this.ctx.request.query;
+    await this.service.deeperDiscountUsage.apply(
+      session_id,
+      cid,
+      code,
+      email
+    );
+    this.ctx.body = { success: 'ok' };
+  }
 }
 
 module.exports = HomeController;
