@@ -19,7 +19,7 @@ module.exports = appInfo => {
   config.keys = appInfo.name + '_1654571054243_3763';
 
   // add your middleware config here
-  config.middleware = [];
+  config.middleware = [ 'headerCookies' ];
 
   // add your user config here
   const userConfig = {
