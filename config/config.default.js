@@ -45,7 +45,7 @@ module.exports = appInfo => {
     allowMethods: 'GET,HEAD,PUT,POST,DELETE,PATCH',
   };
 
-  exports.logger = {
+  config.logger = {
     consoleLevel: 'DEBUG',
     dir: path.join(appInfo.baseDir, 'logs'),
   };
@@ -61,6 +61,22 @@ module.exports = appInfo => {
       enable: false,
     },
   };
+
+  config.view = {
+    defaultViewEngine: 'nunjucks',
+    mapping: {
+      '.html': 'nunjucks',
+    },
+    root: [
+      path.join(appInfo.baseDir, 'app/view'),
+      path.join(appInfo.baseDir, 'frontend/build'),
+    ].join(',')
+  };
+
+  config.static = {
+    prefix: '',
+    dir: [path.join(appInfo.baseDir, 'app/public'), path.join(appInfo.baseDir, 'frontend/build')]
+  }
 
   return {
     ...config,

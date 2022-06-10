@@ -8,11 +8,6 @@ const qqwry = libQQwry.init();
 qqwry.speed();
 
 class HomeController extends Controller {
-  async index() {
-    const { ctx } = this;
-    ctx.body = 'hi, egg';
-  }
-
   async d() {
     const {
       query,
