@@ -19,8 +19,8 @@ class activityEvent extends Service {
 
   async general(session_id, email, cid) {
 
-    const exists = await this.findOne({ cid });
-    if (exists) {
+    const times = await this.model.count({ cid });
+    if (times >= 10) {
       return { code: '' };
     }
     const DISCOUNT_CODE = [
