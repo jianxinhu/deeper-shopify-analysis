@@ -24,21 +24,22 @@ class activityEvent extends Service {
       return { code: '' };
     }
     const DISCOUNT_CODE = [
-      '6VPAK2QSXTNV', // 50
-      'QKF2Z2EVA4XF', // 40
-      'ZTYTFEVZ0SRG', // 30
-      'A7AY5HYJZSFJ', // 20
-      'C237684CNVRQ', // 10
+      { code: '6VPAK2QSXTNV', off: '50' }, // 50
+      { code: 'QKF2Z2EVA4XF', off: '40' }, // 40
+      { code: 'ZTYTFEVZ0SRG', off: '30' }, // 30
+      { code: 'A7AY5HYJZSFJ', off: '20' }, // 20
+      // 'C237684CNVRQ', // 10
     ];
+    const target = _.shuffle(DISCOUNT_CODE)[0];
 
-    const result = await this.save({
+    await this.save({
       cid,
       session_id,
       email,
-      code: _.shuffle(DISCOUNT_CODE)[0],
+      code: target.code,
       status: CODE_STATUS.CREATE,
     });
-    return _.pick(result.toJSON(), [ 'code' ]);
+    return target;
   }
 
   async fill(session_id, cid, code, email) {
